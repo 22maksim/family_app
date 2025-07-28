@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "github.com/22maksim/famoly_app/api/proto/user";
+option go_package = "api/proto/user";
 
 service UserService {
     rpc Register (RegisterRequest) returns (RegisterResponse);

@@ -239,7 +239,7 @@ const file_api_proto_user_proto_rawDesc = "" +
 	"\x05token\x18\x01 \x01(\tR\x05token2z\n" +
 	"\vUserService\x129\n" +
 	"\bRegister\x12\x15.user.RegisterRequest\x1a\x16.user.RegisterResponse\x120\n" +
-	"\x05Login\x12\x12.user.LoginRequest\x1a\x13.user.LoginResponseB/Z-github.com/22maksim/famoly_app/api/proto/userb\x06proto3"
+	"\x05Login\x12\x12.user.LoginRequest\x1a\x13.user.LoginResponseB\x10Z\x0eapi/proto/userb\x06proto3"
 
 var (
 	file_api_proto_user_proto_rawDescOnce sync.Once

@@ -1,0 +1,90 @@
+syntax = "proto3";
+ 
+package family;
+
+option go_package = "api/proto/family";
+
+service FamilyService {
+    rpc CreateFamily (CreateFamilyRequest) returns (CreateFamilyResponse);
+    rpc AddRelatives (AddRelativesRequest) returns (AddRelativesResponse);
+    rpc RemoveRelative (RemoveRelativeRequest) returns (RemoveRelativeResponse);
+    
+    rpc GetRelatives (GetRelativesRequest) returns (GetRelativesResponse);
+    rpc GetRelative (GetRelativeRequest) returns (GetRelativeResponse);
+}
+
+message Relative {
+    string user_id = 1;  // Добавить сюда пир юзера UserPeer
+    RelativeType type = 2;
+    repeated Family families = 3; // Список семей к которым относится родственник
+}
+
+message Family {
+    string surname = 1;
+    repeated Relative relatives = 2;
+    string creator_id = 3;
+    int64 created_at = 4;
+    int64 updated_at = 5;
+}
+
+message CreateFamilyRequest {
+    string surname = 1;
+    string creator_id = 2;
+}
+
+message CreateFamilyResponse {
+    string family_id = 1;
+}
+
+message AddRelativesRequest {
+    string family_id = 1;
+    repeated Relative relatives = 2;
+}
+
+message AddRelativesResponse {
+}
+
+message RemoveRelativeRequest {
+    string family_id =1;
+    Relative relative = 2;
+}
+
+message RemoveRelativeResponse {
+}
+
+message GetRelativesRequest {
+    string family_id = 1;
+    int64 page = 2;
+    int64 page_size = 3;
+}
+
+message GetRelativesResponse {
+    repeated Relative relatives = 1;
+    int64 page = 2;
+}
+
+message GetRelativeRequest {
+    string user_id = 1;
+}
+
+message GetRelativeResponse {
+    Relative relative = 1;
+}
+
+enum RelativeType {
+    UNKNOWN = 0;  
+    MOTHER = 1;
+    FATHER = 2;
+    BROTHER = 3;
+    SISTER = 4;
+    GRANDMOTHER = 5;  
+    GRANDFATHER = 6;  
+    AUNT = 7;         
+    UNCLE = 8;        
+    COUSIN_BROTHER = 9;   
+    COUSIN_SISTER = 10;   
+    GREAT_GRANDMOTHER = 11;
+    GREAT_GRANDFATHER = 12; 
+    SECOND_COUSIN_BROTHER = 13;
+    SECOND_COUSIN_SISTER = 14;
+}
